@@ -34,22 +34,22 @@ namespace msg {
 /// \param msg Reference to the MaxArrayLens message object to serialize
 inline void to_json(nlohmann::json& j, const MaxArrayLens& msg)
 {
-  j["orderNodes"] = msg.order_nodes;
-  j["orderEdges"] = msg.order_edges;
-  j["nodeActions"] = msg.node_actions;
-  j["edgeActions"] = msg.edge_actions;
-  j["actionsActionsParameters"] = msg.actions_actions_parameters;
+  j["order.nodes"] = msg.order_nodes;
+  j["order.edges"] = msg.order_edges;
+  j["node.actions"] = msg.node_actions;
+  j["edge.actions"] = msg.edge_actions;
+  j["actions.actionsParameters"] = msg.actions_actions_parameters;
   j["instantActions"] = msg.instant_actions;
-  j["trajectoryKnotVector"] = msg.trajectory_knot_vector;
-  j["trajectoryControlPoints"] = msg.trajectory_control_points;
-  j["stateNodeStates"] = msg.state_node_states;
-  j["stateEdgeStates"] = msg.state_edge_states;
-  j["stateLoads"] = msg.state_loads;
-  j["stateActionStates"] = msg.state_action_states;
-  j["stateErrors"] = msg.state_errors;
-  j["stateInformation"] = msg.state_information;
-  j["errorErrorReferences"] = msg.error_error_references;
-  j["informationInfoReferences"] = msg.information_info_references;
+  j["trajectory.knotVector"] = msg.trajectory_knot_vector;
+  j["trajectory.controlPoints"] = msg.trajectory_control_points;
+  j["state.nodeStates"] = msg.state_node_states;
+  j["state.edgeStates"] = msg.state_edge_states;
+  j["state.loads"] = msg.state_loads;
+  j["state.actionStates"] = msg.state_action_states;
+  j["state.errors"] = msg.state_errors;
+  j["state.information"] = msg.state_information;
+  j["error.errorReferences"] = msg.error_error_references;
+  j["information.infoReferences"] = msg.information_info_references;
 }
 
 // ============================================================================
@@ -59,25 +59,88 @@ inline void to_json(nlohmann::json& j, const MaxArrayLens& msg)
 /// \param msg Reference to the MaxArrayLens message to populate
 inline void from_json(const nlohmann::json& j, MaxArrayLens& msg)
 {
-  msg.order_nodes = j.at("orderNodes").get<uint32_t>();
-  msg.order_edges = j.at("orderEdges").get<uint32_t>();
-  msg.node_actions = j.at("nodeActions").get<uint32_t>();
-  msg.edge_actions = j.at("edgeActions").get<uint32_t>();
-  msg.actions_actions_parameters =
-    j.at("actionsActionsParameters").get<uint32_t>();
-  msg.instant_actions = j.at("instantActions").get<uint32_t>();
-  msg.trajectory_knot_vector = j.at("trajectoryKnotVector").get<uint32_t>();
-  msg.trajectory_control_points =
-    j.at("trajectoryControlPoints").get<uint32_t>();
-  msg.state_node_states = j.at("stateNodeStates").get<uint32_t>();
-  msg.state_edge_states = j.at("stateEdgeStates").get<uint32_t>();
-  msg.state_loads = j.at("stateLoads").get<uint32_t>();
-  msg.state_action_states = j.at("stateActionStates").get<uint32_t>();
-  msg.state_errors = j.at("stateErrors").get<uint32_t>();
-  msg.state_information = j.at("stateInformation").get<uint32_t>();
-  msg.error_error_references = j.at("errorErrorReferences").get<uint32_t>();
-  msg.information_info_references =
-    j.at("informationInfoReferences").get<uint32_t>();
+  if (j.contains("order.nodes"))
+  {
+    msg.order_nodes = j.at("order.nodes").get<uint32_t>();
+  }
+
+  if (j.contains("order.edges"))
+  {
+    msg.order_edges = j.at("order.edges").get<uint32_t>();
+  }
+
+  if (j.contains("node.actions"))
+  {
+    msg.node_actions = j.at("node.actions").get<uint32_t>();
+  }
+
+  if (j.contains("edge.actions"))
+  {
+    msg.edge_actions = j.at("edge.actions").get<uint32_t>();
+  }
+
+  if (j.contains("actions.actionsParameters"))
+  {
+    msg.actions_actions_parameters =
+      j.at("actions.actionsParameters").get<uint32_t>();
+  }
+
+  if (j.contains("instantActions"))
+  {
+    msg.instant_actions = j.at("instantActions").get<uint32_t>();
+  }
+
+  if (j.contains("trajectory.knotVector"))
+  {
+    msg.trajectory_knot_vector = j.at("trajectory.knotVector").get<uint32_t>();
+  }
+
+  if (j.contains("trajectory.controlPoints"))
+  {
+    msg.trajectory_control_points =
+      j.at("trajectory.controlPoints").get<uint32_t>();
+  }
+
+  if (j.contains("state.nodeStates"))
+  {
+    msg.state_node_states = j.at("state.nodeStates").get<uint32_t>();
+  }
+
+  if (j.contains("state.edgeStates"))
+  {
+    msg.state_edge_states = j.at("state.edgeStates").get<uint32_t>();
+  }
+
+  if (j.contains("state.loads"))
+  {
+    msg.state_loads = j.at("state.loads").get<uint32_t>();
+  }
+
+  if (j.contains("state.actionStates"))
+  {
+    msg.state_action_states = j.at("state.actionStates").get<uint32_t>();
+  }
+
+  if (j.contains("state.errors"))
+  {
+    msg.state_errors = j.at("state.errors").get<uint32_t>();
+  }
+
+  if (j.contains("state.information"))
+  {
+    msg.state_information = j.at("state.information").get<uint32_t>();
+  }
+
+  if (j.contains("error.errorReferences"))
+  {
+    msg.error_error_references = j.at("error.errorReferences").get<uint32_t>();
+  }
+
+  if (j.contains("information.infoReferences"))
+  {
+    msg.information_info_references =
+      j.at("information.infoReferences").get<uint32_t>();
+  }
 }
 
 }  // namespace msg

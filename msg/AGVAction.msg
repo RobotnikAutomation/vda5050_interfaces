@@ -44,16 +44,16 @@ string[<=1] action_description
 # Array of possible blocking types for defined action.
 #
 # Field type: Optional
-string[] blocking_types 
+# string[] blocking_types
 
 # Enum values for possible blocking types.
 #
 # None: action can be executed in parallel while driving.
-string BLOCKING_TYPES_NONE="NONE"
+# string BLOCKING_TYPES_NONE="NONE"
 #
 # Soft: action can be executed in parallel but AGV cannot be driving.
-string BLOCKING_TYPE_SOFT="SOFT"
+# string BLOCKING_TYPE_SOFT="SOFT"
 #
 # Hard: action cannot be executed in parallel and AGV cannot be driving.
-string BLOCKING_TYPES_HARD="HARD"
+# string BLOCKING_TYPES_HARD="HARD"
 

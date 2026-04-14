@@ -70,22 +70,22 @@ inline void to_json(nlohmann::json& j, const AGVAction& msg)
     j["actionDescription"] = msg.action_description.front();
   }
 
-  if (!msg.blocking_types.empty())
-  {
-    for (std::string type : msg.blocking_types)
-    {
-      if (
-        type != AGVAction::BLOCKING_TYPES_NONE &&
-        type != AGVAction::BLOCKING_TYPE_SOFT &&
-        type != AGVAction::BLOCKING_TYPES_HARD)
-      {
-        throw std::runtime_error(
-          "Serialization error: Unexpected type in blocking_types");
-      }
-    }
+  // if (!msg.blocking_types.empty())
+  // {
+  //   for (std::string type : msg.blocking_types)
+  //   {
+  //     if (
+  //       type != AGVAction::BLOCKING_TYPES_NONE &&
+  //       type != AGVAction::BLOCKING_TYPE_SOFT &&
+  //       type != AGVAction::BLOCKING_TYPES_HARD)
+  //     {
+  //       throw std::runtime_error(
+  //         "Serialization error: Unexpected type in blocking_types");
+  //     }
+  //   }
 
-    j["blockingTypes"] = msg.blocking_types;
-  }
+  //   j["blockingTypes"] = msg.blocking_types;
+  // }
 }
 
 // ============================================================================
@@ -94,7 +94,7 @@ inline void to_json(nlohmann::json& j, const AGVAction& msg)
 /// \param j Reference to the JSON object containing serialized AGVAction data
 /// \param msg Reference to the AGVAction message to populate
 ///
-/// \throws std::runtime_error If failed to deserialize action_scopes or blocking_types
+/// \throws std::runtime_error If failed to deserialize action_scopes
 inline void from_json(const nlohmann::json& j, AGVAction& msg)
 {
   msg.action_type = j.at("actionType").get<std::string>();
@@ -131,22 +131,22 @@ inline void from_json(const nlohmann::json& j, AGVAction& msg)
       j.at("actionDescription").get<std::string>());
   }
 
-  if (j.contains("blockingTypes"))
-  {
-    auto blocking_types = j.at("blockingTypes").get<std::vector<std::string>>();
-    for (std::string type : blocking_types)
-    {
-      if (
-        type != AGVAction::BLOCKING_TYPES_NONE &&
-        type != AGVAction::BLOCKING_TYPE_SOFT &&
-        type != AGVAction::BLOCKING_TYPES_HARD)
-      {
-        throw std::runtime_error(
-          "JSON parsing error: Unexpected type in blocking_types");
-      }
-    }
-    msg.blocking_types = blocking_types;
-  }
+  // if (j.contains("blockingTypes"))
+  // {
+  //   auto blocking_types = j.at("blockingTypes").get<std::vector<std::string>>();
+  //   for (std::string type : blocking_types)
+  //   {
+  //     if (
+  //       type != AGVAction::BLOCKING_TYPES_NONE &&
+  //       type != AGVAction::BLOCKING_TYPE_SOFT &&
+  //       type != AGVAction::BLOCKING_TYPES_HARD)
+  //     {
+  //       throw std::runtime_error(
+  //         "JSON parsing error: Unexpected type in blocking_types");
+  //     }
+  //   }
+  //   msg.blocking_types = blocking_types;
+  // }
 }
 
 }  // namespace msg

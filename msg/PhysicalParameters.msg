@@ -44,10 +44,10 @@ float64 length
 # Minimal controlled continuous rotation speed of the AGV [rad/s]
 #
 # Field type: Optional
-float64[<=1] angular_speed_min
+# float64[<=1] angular_speed_min
 
 # Maximum rotation speed of the AGV [rad/s]
 #
 # Field type: Optional
-float64[<=1] angular_speed_max
+# float64[<=1] angular_speed_max
 

@@ -50,6 +50,7 @@ inline void from_json(const nlohmann::json& j, ControlPoint& msg)
 {
   msg.x = j.at("x").get<double>();
   msg.y = j.at("y").get<double>();
+  msg.weight = 1.0;
 
   if (j.contains("weight"))
   {

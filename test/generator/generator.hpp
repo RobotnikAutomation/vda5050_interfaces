@@ -353,26 +353,26 @@ public:
   }
 
   /// \brief Generate a random blockingType value for AGVAction
-  std::string generate_random_agv_action_blocking_type()
-  {
-    std::vector<std::string> states = {
-      AGVAction::BLOCKING_TYPE_SOFT, AGVAction::BLOCKING_TYPES_HARD,
-      AGVAction::BLOCKING_TYPES_NONE};
-    auto state_idx = generate_random_index(states.size());
-    return states[state_idx];
-  }
+  // std::string generate_random_agv_action_blocking_type()
+  // {
+  //   std::vector<std::string> states = {
+  //     AGVAction::BLOCKING_TYPE_SOFT, AGVAction::BLOCKING_TYPES_HARD,
+  //     AGVAction::BLOCKING_TYPES_NONE};
+  //   auto state_idx = generate_random_index(states.size());
+  //   return states[state_idx];
+  // }
 
   /// \brief Generate a random AGVAction blockingTypes vector
-  std::vector<std::string> generate_random_agv_action_blocking_types()
-  {
-    std::vector<std::string> agv_action_blocking_types(generate_random_size());
-    for (auto it = agv_action_blocking_types.begin();
-         it != agv_action_blocking_types.end(); ++it)
-    {
-      *it = generate_random_agv_action_blocking_type();
-    }
-    return agv_action_blocking_types;
-  }
+  // std::vector<std::string> generate_random_agv_action_blocking_types()
+  // {
+  //   std::vector<std::string> agv_action_blocking_types(generate_random_size());
+  //   for (auto it = agv_action_blocking_types.begin();
+  //        it != agv_action_blocking_types.end(); ++it)
+  //   {
+  //     *it = generate_random_agv_action_blocking_type();
+  //   }
+  //   return agv_action_blocking_types;
+  // }
 
   /// \brief Generate a random valueDataType value
   std::string generate_random_value_data_type()
@@ -605,7 +605,7 @@ public:
         generate_random_size());
       msg.result_description.push_back(generate_random_string());
       msg.action_description.push_back(generate_random_string());
-      msg.blocking_types = generate_random_agv_action_blocking_types();
+      // msg.blocking_types = generate_random_agv_action_blocking_types();
     }
     else if constexpr (std::is_same_v<T, AGVGeometry>)
     {
@@ -647,7 +647,7 @@ public:
       msg.protocol_features = generate<ProtocolFeatures>();
       msg.agv_geometry = generate<AGVGeometry>();
       msg.load_specification = generate<LoadSpecification>();
-      msg.vehicle_config = generate<VehicleConfig>();
+      // msg.vehicle_config = generate<VehicleConfig>();
     }
     else if constexpr (std::is_same_v<T, ActionParameterFactsheet>)
     {
@@ -743,8 +743,8 @@ public:
       msg.height_max = generate_random_float();
       msg.width = generate_random_float();
       msg.length = generate_random_float();
-      msg.angular_speed_min.push_back(generate_random_float());
-      msg.angular_speed_max.push_back(generate_random_float());
+      // msg.angular_speed_min.push_back(generate_random_float());
+      // msg.angular_speed_max.push_back(generate_random_float());
     }
     else if constexpr (std::is_same_v<T, PolygonPoint>)
     {

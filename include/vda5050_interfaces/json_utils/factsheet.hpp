@@ -48,7 +48,7 @@ inline void to_json(nlohmann::json& j, const Factsheet& msg)
   j["protocolFeatures"] = msg.protocol_features;
   j["agvGeometry"] = msg.agv_geometry;
   j["loadSpecification"] = msg.load_specification;
-  j["vehicleConfig"] = msg.vehicle_config;
+  // j["vehicleConfig"] = msg.vehicle_config;
 }
 
 // ============================================================================
@@ -66,7 +66,7 @@ inline void from_json(const nlohmann::json& j, Factsheet& msg)
   msg.protocol_features = j.at("protocolFeatures").get<ProtocolFeatures>();
   msg.agv_geometry = j.at("agvGeometry").get<AGVGeometry>();
   msg.load_specification = j.at("loadSpecification").get<LoadSpecification>();
-  msg.vehicle_config = j.at("vehicleConfig").get<VehicleConfig>();
+  // msg.vehicle_config = j.at("vehicleConfig").get<VehicleConfig>();
 }
 
 }  // namespace msg

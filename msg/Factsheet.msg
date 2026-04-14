@@ -41,5 +41,5 @@ LoadSpecification load_specification
 # and optional network information
 # 
 # Field type: Required
-VehicleConfig vehicle_config  
+# VehicleConfig vehicle_config
 

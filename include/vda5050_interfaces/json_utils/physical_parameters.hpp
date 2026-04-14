@@ -43,15 +43,15 @@ inline void to_json(nlohmann::json& j, const PhysicalParameters& msg)
   j["width"] = msg.width;
   j["length"] = msg.length;
 
-  if (!msg.angular_speed_min.empty())
-  {
-    j["angularSpeedMin"] = msg.angular_speed_min.front();
-  }
+  // if (!msg.angular_speed_min.empty())
+  // {
+  //   j["angularSpeedMin"] = msg.angular_speed_min.front();
+  // }
 
-  if (!msg.angular_speed_max.empty())
-  {
-    j["angularSpeedMax"] = msg.angular_speed_max.front();
-  }
+  // if (!msg.angular_speed_max.empty())
+  // {
+  //   j["angularSpeedMax"] = msg.angular_speed_max.front();
+  // }
 }
 
 // ============================================================================
@@ -70,15 +70,15 @@ inline void from_json(const nlohmann::json& j, PhysicalParameters& msg)
   msg.width = j.at("width").get<double>();
   msg.length = j.at("length").get<double>();
 
-  if (j.contains("angularSpeedMin"))
-  {
-    msg.angular_speed_min.push_back(j.at("angularSpeedMin").get<double>());
-  }
+  // if (j.contains("angularSpeedMin"))
+  // {
+  //   msg.angular_speed_min.push_back(j.at("angularSpeedMin").get<double>());
+  // }
 
-  if (j.contains("angularSpeedMax"))
-  {
-    msg.angular_speed_max.push_back(j.at("angularSpeedMax").get<double>());
-  }
+  // if (j.contains("angularSpeedMax"))
+  // {
+  //   msg.angular_speed_max.push_back(j.at("angularSpeedMax").get<double>());
+  // }
 }
 
 }  // namespace msg
