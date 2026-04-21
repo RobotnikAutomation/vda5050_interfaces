@@ -904,7 +904,8 @@ public:
       msg.max_height.push_back(generate_random_float());
       msg.min_height.push_back(generate_random_float());
       msg.orientation.push_back(generate_random_float());
-      msg.orientation_type = generate_random_orientation_type();
+      msg.orientation_type.clear();
+      msg.orientation_type.push_back(generate_random_orientation_type());
       msg.direction.push_back(generate_random_string());
       msg.rotation_allowed.push_back(generate_random_bool());
       msg.max_rotation_speed.push_back(generate_random_float());

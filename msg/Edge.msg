@@ -78,7 +78,7 @@ float64[<=1] orientation
 # 
 # Default value: TANGENTIAL
 # Field type: Optional
-string orientation_type "TANGENTIAL"
+string[<=1] orientation_type ["TANGENTIAL"]
 
 # Enum values for orientation_type
 #

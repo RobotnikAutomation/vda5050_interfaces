@@ -72,16 +72,27 @@ inline void to_json(nlohmann::json& j, const Edge& msg)
     j["orientation"] = msg.orientation.front();
   }
 
-  if (
-    msg.orientation_type == msg.ORIENTATION_TYPE_TANGENTIAL ||
-    msg.orientation_type == msg.ORIENTATION_TYPE_GLOBAL)
+  if (!msg.orientation_type.empty())
   {
-    j["orientationType"] = msg.orientation_type;
+    const auto & orientation_type = msg.orientation_type.front();
+    if (
+      orientation_type == msg.ORIENTATION_TYPE_TANGENTIAL ||
+      orientation_type == msg.ORIENTATION_TYPE_GLOBAL)
+    {
+      if (orientation_type != msg.ORIENTATION_TYPE_TANGENTIAL)
+      {
+        j["orientationType"] = orientation_type;
+      }
+    }
+    else
+    {
+      throw std::runtime_error(
+        "Serialization error: Unexpected orientationType.");
+    }
   }
   else
   {
-    throw std::runtime_error(
-      "Serialization error: Unexpected orientationType.");
+    j["orientationType"] = msg.ORIENTATION_TYPE_TANGENTIAL;
   }
 
   if (!msg.direction.empty())
@@ -151,16 +162,24 @@ inline void from_json(const nlohmann::json& j, Edge& msg)
     msg.orientation.push_back(j.at("orientation").get<double>());
   }
 
-  auto orientation_type = j.at("orientationType").get<std::string>();
-  if (
-    orientation_type == Edge::ORIENTATION_TYPE_TANGENTIAL ||
-    orientation_type == Edge::ORIENTATION_TYPE_GLOBAL)
+  msg.orientation_type.clear();
+  if (j.contains("orientationType"))
   {
-    msg.orientation_type = orientation_type;
+    auto orientation_type = j.at("orientationType").get<std::string>();
+    if (
+      orientation_type == Edge::ORIENTATION_TYPE_TANGENTIAL ||
+      orientation_type == Edge::ORIENTATION_TYPE_GLOBAL)
+    {
+      msg.orientation_type.push_back(orientation_type);
+    }
+    else
+    {
+      throw std::runtime_error("JSON parsing error: Unexpected orientationType.");
+    }
   }
   else
   {
-    throw std::runtime_error("JSON parsing error: Unexpected orientationType.");
+    msg.orientation_type.push_back(Edge::ORIENTATION_TYPE_TANGENTIAL);
   }
 
   if (j.contains("direction"))
