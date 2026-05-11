@@ -383,7 +383,8 @@ public:
       ActionParameterFactsheet::VALUE_DATA_TYPE_FLOAT,
       ActionParameterFactsheet::VALUE_DATA_TYPE_INTEGER,
       ActionParameterFactsheet::VALUE_DATA_TYPE_NUMBER,
-      ActionParameterFactsheet::VALUE_DATA_TYPE_OBJECT};
+      ActionParameterFactsheet::VALUE_DATA_TYPE_OBJECT,
+      ActionParameterFactsheet::VALUE_DATA_TYPE_STRING};
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }

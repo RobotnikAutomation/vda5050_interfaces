@@ -46,6 +46,7 @@ inline void to_json(nlohmann::json& j, const ActionParameterFactsheet& msg)
     msg.value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_NUMBER ||
     msg.value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_INTEGER ||
     msg.value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_FLOAT ||
+    msg.value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_STRING ||
     msg.value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_OBJECT ||
     msg.value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_ARRAY)
   {
@@ -85,6 +86,7 @@ inline void from_json(const nlohmann::json& j, ActionParameterFactsheet& msg)
     value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_NUMBER ||
     value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_INTEGER ||
     value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_FLOAT ||
+    value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_STRING ||
     value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_OBJECT ||
     value_data_type == ActionParameterFactsheet::VALUE_DATA_TYPE_ARRAY)
   {
