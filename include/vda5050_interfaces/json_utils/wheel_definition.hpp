@@ -90,7 +90,7 @@ inline void from_json(const nlohmann::json& j, WheelDefinition& msg)
   msg.position = j.at("position").get<Position>();
   msg.diameter = j.at("diameter").get<double>();
   msg.width = j.at("width").get<double>();
-  msg.center_displacement = j.at("centerDisplacement").get<double>();
+  msg.center_displacement = j.contains("centerDisplacement") ? j.at("centerDisplacement").get<double>() : 0.0;
 
   if (j.contains("constraints"))
   {
