@@ -151,16 +151,23 @@ inline void from_json(const nlohmann::json& j, Edge& msg)
     msg.orientation.push_back(j.at("orientation").get<double>());
   }
 
-  auto orientation_type = j.at("orientationType").get<std::string>();
-  if (
-    orientation_type == Edge::ORIENTATION_TYPE_TANGENTIAL ||
-    orientation_type == Edge::ORIENTATION_TYPE_GLOBAL)
+  if (j.contains("orientationType"))
   {
-    msg.orientation_type = orientation_type;
+    auto orientation_type = j.at("orientationType").get<std::string>();
+    if (
+      orientation_type == Edge::ORIENTATION_TYPE_TANGENTIAL ||
+      orientation_type == Edge::ORIENTATION_TYPE_GLOBAL)
+    {
+      msg.orientation_type = orientation_type;
+    }
+    else
+    {
+      throw std::runtime_error("JSON parsing error: Unexpected orientationType.");
+    }
   }
   else
   {
-    throw std::runtime_error("JSON parsing error: Unexpected orientationType.");
+    msg.orientation_type = Edge::ORIENTATION_TYPE_TANGENTIAL;
   }
 
   if (j.contains("direction"))
